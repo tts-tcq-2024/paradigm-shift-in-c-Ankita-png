@@ -1,52 +1,51 @@
 #include <stdio.h>
 #include <assert.h>
  
+// Function to check if temperature is out of range
 int isTemperatureOutOfRange(float temperature) {
-    // Decision Point 1
     if (temperature < 0 || temperature > 45) {
         printf("Temperature out of range!\n");
-        return 1;
+        return 1; // Return 1 for out of range
     }
-    return 0;
+    return 0; // Return 0 for within range
 }
  
+// Function to check if state of charge (SOC) is out of range
 int isSocOutOfRange(float soc) {
-    // Decision Point 1
     if (soc < 20 || soc > 80) {
         printf("State of Charge out of range!\n");
-        return 1;
+        return 1; // Return 1 for out of range
     }
-    return 0;
+    return 0; // Return 0 for within range
 }
  
+// Function to check if charge rate is out of range
 int isChargeRateOutOfRange(float chargeRate) {
-    // Decision Point 1
     if (chargeRate > 0.8) {
         printf("Charge Rate out of range!\n");
-        return 1;
+        return 1; // Return 1 for out of range
     }
-    return 0;
+    return 0; // Return 0 for within range
 }
  
+// Function to check overall battery status based on given parameters
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-    // Decision Point 1
+    // Check each parameter against its respective range
     if (isTemperatureOutOfRange(temperature)) {
-        return 0;
+        return 0; // Temperature out of range
     }
-    // Decision Point 2
     if (isSocOutOfRange(soc)) {
-        return 0;
+        return 0; // State of charge out of range
     }
-    // Decision Point 3
     if (isChargeRateOutOfRange(chargeRate)) {
-        return 0;
+        return 0; // Charge rate out of range
     }
-    return 1;
+    return 1; // All parameters within acceptable range
 }
  
+// Main function to test batteryIsOk function using assertions
 int main() {
-    assert(batteryIsOk(25, 70, 0.7));
-    assert(!batteryIsOk(50, 85, 0));
+    // Test cases using assertions
+    assert(batteryIsOk(25, 70, 0.7)); // Should pass, all parameters within range
+    assert(!batteryIsOk(50, 85, 0));   // Should fail, temperature and SOC out of range
 }
-
-has context menu
