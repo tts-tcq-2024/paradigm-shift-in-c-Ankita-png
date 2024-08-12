@@ -30,17 +30,7 @@ int isChargeRateOutOfRange(float chargeRate) {
  
 // Function to check overall battery status based on given parameters
 int batteryIsOk(float temperature, float soc, float chargeRate) {
-    // Check each parameter against its respective range
-    if (isTemperatureOutOfRange(temperature)) {
-        return 0; // Temperature out of range
-    }
-    if (isSocOutOfRange(soc)) {
-        return 0; // State of charge out of range
-    }
-    if (isChargeRateOutOfRange(chargeRate)) {
-        return 0; // Charge rate out of range
-    }
-    return 1; // All parameters within acceptable range
+   return (isTemperatureOutOfRange(temperature) && isSocOutOfRange(soc) && isChargeRateOutOfRange(chargeRate));
 }
  
 // Main function to test batteryIsOk function using assertions
